@@ -23,11 +23,9 @@ namespace TPTSample.Controllers
         public ActionResult RunCreate()
         {
             var db = new InheritanceMappingContext();
-            //var tmpId = db.BillingDetails.Select(o=>o.BillingDetailId).DefaultIfEmpty().Max();
             Random tmpRandom = new Random();
             db.BillingDetails.Add(new CreditCard
             {
-                //BillingDetailId = ++tmpId,
                 Owner = $"Owner-{RandomUtil.GetLetters(3)}",
                 Number = tmpRandom.Next(100).ToString(),
                 CardType = tmpRandom.Next(3),
@@ -37,7 +35,6 @@ namespace TPTSample.Controllers
             });
             db.BillingDetails.Add(new BankAccount
             {
-                //BillingDetailId = ++tmpId,
                 Owner = $"Owner-{RandomUtil.GetLetters(3)}",
                 Number = tmpRandom.Next(100).ToString(),
                 BankName = $"BankName-{RandomUtil.GetLetters(3)}",

@@ -47,5 +47,40 @@ namespace TPCSample.Controllers
             db.SaveChanges();
             return View();
         }
+
+        public ActionResult RunCreate2()
+        {
+            var db = new InheritanceMappingContext();
+            //var tmpId = db.BillingDetails.Select(o => o.BillingDetailId).DefaultIfEmpty().Max();
+            Random tmpRandom = new Random();
+            db.Cameras.Add(new Camera
+            {
+                //Id = 1,
+                Caption = $"Caption-{RandomUtil.GetLetters(3)}",
+                Manufacturer = $"Manufacturer-{RandomUtil.GetLetters(3)}",
+                TypeNumber = $"TypeNumber-{RandomUtil.GetLetters(3)}",
+                Lens = $"Lens-{RandomUtil.GetLetters(3)}"
+            });
+            db.SingleReflexCameras.Add(new SingleReflexCamera()
+            {
+                //Id = 2,
+                Caption = $"Caption-{RandomUtil.GetLetters(3)}",
+                Manufacturer = $"Manufacturer-{RandomUtil.GetLetters(3)}",
+                TypeNumber = $"TypeNumber-{RandomUtil.GetLetters(3)}",
+                LensMount = $"LensMount-{RandomUtil.GetLetters(3)}"
+            });
+            db.Lenses.Add(new Lens()
+            {
+                //Id = 3,
+                Caption = $"Caption-{RandomUtil.GetLetters(3)}",
+                Manufacturer = $"Manufacturer-{RandomUtil.GetLetters(3)}",
+                TypeNumber = $"TypeNumber-{RandomUtil.GetLetters(3)}",
+                FocalLength = $"FocalLength-{RandomUtil.GetLetters(3)}",
+                MaxAperture = $"MaxAperture-{RandomUtil.GetLetters(3)}"
+
+            });
+            db.SaveChanges();
+            return View();
+        }
     }
 }
