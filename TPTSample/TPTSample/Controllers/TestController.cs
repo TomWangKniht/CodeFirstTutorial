@@ -44,5 +44,14 @@ namespace TPTSample.Controllers
             db.SaveChanges();
             return View();
         }
+
+        public ActionResult RunDeleteCreditCard()
+        {
+            var db = new InheritanceMappingContext();
+            var data = db.BillingDetails.OfType<CreditCard>().First();
+            db.BillingDetails.Remove(data);
+            db.SaveChanges();
+            return View();
+        }
     }
 }
